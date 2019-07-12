@@ -19,8 +19,25 @@ body {
     -moz-user-select: none;
 }
 
-.fillerSpace {
-    min-height: 50%;
+.imgDisplay {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: -50;
+}
+
+.imageToDisplay {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s;
+}
+
+.imageFade {
+    opacity: 0;
 }
 
 .textBox {
@@ -33,6 +50,7 @@ body {
     padding-left: 25px;
     overflow-y: auto;
     border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .textOutput {
