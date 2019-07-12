@@ -52,6 +52,7 @@ function nextDisplay() {
         // [...Foo] creates an array from the Foo variable, this is used here to split the string into chars
         // This is used as it allows support for special characters (unlike a function like Foo.split('') which would output broken characters in that case)
         textToDisplayChar = [...textToDisplay[textIndex]];
+        // Stops sounds issues when click mashing
         clearTimeout(audioPause);
         charIndex = 0;
         // When the text starts displaying, there's a 75ms delay which means that the sounds start to early, this stops that
