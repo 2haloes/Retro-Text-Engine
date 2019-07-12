@@ -2,7 +2,8 @@ $(function() {
     // Array to store values, edit this to edit the output
     textToDisplay = [
         "Hello there",
-        "*Gasp!*"
+        "*Gasp!*",
+        "Pizza PIE!!!"
     ];
 
     textAudio = new Audio("talking.mp3");
@@ -30,8 +31,8 @@ function nextDisplay() {
     charIndex = 0;
     textAudio.play();
     $('#textOutput').text('');
-    textOutputInterval = setInterval(textOutput, 200);
-    textAudio.loop = false;
+    textOutputInterval = setInterval(textOutput, 75);
+    
     textIndex++;
 }
 
@@ -41,6 +42,8 @@ function textOutput() {
         charIndex++;
     } else {
         clearInterval(textOutputInterval);
+        setTimeout(() => {textAudio.pause();}, 200);
+        textAudio.loop = false;
         return;
     }
 }
