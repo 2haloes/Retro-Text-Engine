@@ -6,7 +6,7 @@
 * {
     color: white;
     font-family: retro, monospace;
-    font-size: 7vh;
+    font-size: 7vmin;
 }
 
 body {
@@ -14,7 +14,7 @@ body {
 }
 
 .header {
-    font-size: 10vh;
+    font-size: 10vmin;
     user-select: none;
     -moz-user-select: none;
 }
