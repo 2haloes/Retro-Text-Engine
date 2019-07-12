@@ -1,0 +1,33 @@
+@font-face {
+    font-family: retro;
+    src: url(typeface.woff);
+}
+
+* {
+    color: white;
+    font-family: retro, monospace;
+    font-size: 1.5em;
+}
+
+body {
+    background: black
+}
+
+h1 {
+    font-size: 4em;
+}
+
+.fillerSpace {
+    min-height: 50%;
+}
+
+.textBox {
+    border: 5px double white;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 75vh;
+    padding-left: 25px;
+    overflow-y: scroll;
+}
