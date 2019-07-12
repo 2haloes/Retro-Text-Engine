@@ -29,5 +29,5 @@ h1 {
     right: 0;
     height: 75vh;
     padding-left: 25px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
