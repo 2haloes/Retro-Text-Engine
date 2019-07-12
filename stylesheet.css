@@ -6,15 +6,15 @@
 * {
     color: white;
     font-family: retro, monospace;
-    font-size: 1.5em;
+    font-size: 7vh;
 }
 
 body {
     background: black
 }
 
-h1 {
-    font-size: 4em;
+.header {
+    font-size: 10vh;
     user-select: none;
     -moz-user-select: none;
 }
@@ -29,9 +29,10 @@ h1 {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 50vh;
+    height: 25vh;
     padding-left: 25px;
     overflow-y: auto;
+    border-radius: 5px;
 }
 
 .textOutput {
