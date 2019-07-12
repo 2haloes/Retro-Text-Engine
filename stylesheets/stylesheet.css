@@ -1,6 +1,6 @@
 @font-face {
     font-family: retro;
-    src: url(typeface.woff);
+    src: url(../assets/typeface.woff);
 }
 
 * {

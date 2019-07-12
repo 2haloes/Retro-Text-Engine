@@ -6,7 +6,7 @@ $(function() {
         "Pizza PIE!!!"
     ];
 
-    textAudio = new Audio("talking.mp3");
+    textAudio = new Audio("assets/talking.mp3");
     textIndex = 0;
 
     document.getElementById("textBox").addEventListener("click", function() {
