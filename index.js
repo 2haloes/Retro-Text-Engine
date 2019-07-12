@@ -13,7 +13,6 @@ $(function() {
         nextDisplay();
     });
 
-    nextDisplay();
 });
 
 let textToDisplay;
