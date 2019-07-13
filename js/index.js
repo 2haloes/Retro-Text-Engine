@@ -1,5 +1,17 @@
 $(function() {
     // Array to store values, edit this to edit the output
+
+    // Explination!
+    /*
+        To output text, you can insert text into the array below, the text is comma seperated as seen below
+        But 2 more output types can be used:
+        Images: Change the background image with fade effects. 
+            Syntax - [IMAGE]:foo.bar - Where foo is the file name and bar is the file extention
+            Images are loaded from [project root]/assets/images folder
+        Sounds: Play a sound or music (may be expanded later)
+            Syntax - [SOUND]:foo.bar - Where foo is the file name and bar is the file extention
+            Sounds are loaded from [project root]/assets/sounds folder
+    */
     textToDisplay = [
         "Hello there",
         "*Gasp!*",
