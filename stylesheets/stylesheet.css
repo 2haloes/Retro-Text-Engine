@@ -40,6 +40,10 @@ body {
     opacity: 0;
 }
 
+.listMargin {
+    margin: 1vmin 0 0 0;
+}
+
 .textBox {
     border: 5px double white;
     position: fixed;

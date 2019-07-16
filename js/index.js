@@ -1,4 +1,4 @@
-$(function() {
+document.addEventListener('DOMContentLoaded', function() {
     // Array to store values, edit this to edit the output
 
     // Explination!
@@ -8,13 +8,16 @@ $(function() {
         Images: Change the background image with fade effects. 
             Syntax - [IMAGE]:foo.bar - Where foo is the file name and bar is the file extention
             Images are loaded from [project root]/assets/images folder
+            Any browser compatible image can be used here
         Sounds: Play a sound or music (may be expanded later)
             Syntax - [SOUND]:foo.bar - Where foo is the file name and bar is the file extention
             Sounds are loaded from [project root]/assets/sounds folder
+            Any browser compatible audio file can be used, mp3 (IE9+) and WAV (No IE) are the most compatible 
     */
     textToDisplay = [
         "Hello there",
         "*Gasp!*",
+        "[IMAGE]:persona.png",
         "Pizza PIE!!!"
     ];
     // This is where the talking sound is stored, either changing the string here
@@ -26,6 +29,8 @@ $(function() {
 
     // This is used to find where in the text display it is, don't mess with this value
     textIndex = 0;
+
+    textElement = document.getElementById('textOutput');
 
     // When the box is clicked, then progress the text
     document.getElementById("textBox").addEventListener("click", function() {
@@ -43,6 +48,7 @@ let textToDisplayChar;
 let textIndex;
 let charIndex;
 let textOutputInterval;
+let textElement;
 let textAudio;
 let audioPause;
 let cutOutput;
@@ -53,20 +59,21 @@ function nextDisplay() {
     if (cutOutput && outputting) {
         // clearInterval stops the loop of this function
         clearInterval(textOutputInterval);
-        $('#textOutput').text(textToDisplayChar.join(''));
+        textElement.innerHTML = textToDisplayChar.join('');
         audioPause = setTimeout(() => {textAudio.pause();}, 75);
         cutOutput = false;
         outputting = false;
     } else {
         if (textToDisplay[textIndex].startsWith('[IMAGE]:')) {
             let tmpImgString = textToDisplay[textIndex].substr(8);
-            if (!!$('#imageToDisplay').attr('src')) {
-                $('#imageToDisplay').toggleClass('imageFade');
-                setTimeout(() => {$('#imageToDisplay').attr('src', 'assets/images/' + tmpImgString);}, 500);
-                setTimeout(() => {$('#imageToDisplay').toggleClass('imageFade');}, 1000);
+            let imgElement = document.getElementById('imageToDisplay')
+            if (!!imgElement.getAttribute('src')) {
+                imgElement.classList.toggle('imageFade');
+                setTimeout(() => {imgElement.setAttribute('src', 'assets/images/' + tmpImgString);}, 500);
+                setTimeout(() => {imgElement.classList.toggle('imageFade');}, 1000);
             } else {
-                setTimeout(() => {$('#imageToDisplay').attr('src', 'assets/images/' + tmpImgString);}, 500);
-                setTimeout(() => {$('#imageToDisplay').toggleClass('imageFade');}, 500);
+                setTimeout(() => {imgElement.setAttribute('src', 'assets/images/' + tmpImgString);}, 500);
+                setTimeout(() => {imgElement.classList.toggle('imageFade');}, 500);
             }
         } else if (textToDisplay[textIndex].startsWith('[SOUND]:')) {
             let tmpImgString = textToDisplay[textIndex].substr(8);
@@ -81,7 +88,7 @@ function nextDisplay() {
             outputting = true;
             // When the text starts displaying, there's a 75ms delay which means that the sounds start to early, this stops that
             setTimeout(() => {textAudio.play();}, 80);
-            $('#textOutput').text('');
+            textElement.innerHTML = '';
             // Every 75ms, a char is displayed
             textOutputInterval = setInterval(textOutput, 75);
         }
@@ -93,7 +100,7 @@ function nextDisplay() {
 function textOutput() {
     if (charIndex < textToDisplayChar.length) {
         // This appends the char to the currently displayed text
-        $('#textOutput').text($('#textOutput').text() + textToDisplayChar[charIndex]);
+        textElement.innerHTML = textElement.innerHTML + textToDisplayChar[charIndex];
         charIndex++;
     } else {
         // clearInterval stops the loop of this function
