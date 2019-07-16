@@ -1,36 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Array to store values, edit this to edit the output
-
-    // Explination!
-    /*
-        To output text, you can insert text into the array below, the text is comma seperated as seen below
-        But 2 more output types can be used:
-        Images: Change the background image with fade effects. 
-            Syntax - [IMAGE]:foo.bar - Where foo is the file name and bar is the file extention
-            Images are loaded from [project root]/assets/images folder
-            Any browser compatible image can be used here
-        Sounds: Play a sound or music (may be expanded later)
-            Syntax - [SOUND]:foo.bar - Where foo is the file name and bar is the file extention
-            Sounds are loaded from [project root]/assets/sounds folder
-            Any browser compatible audio file can be used, mp3 (IE9+) and WAV (No IE) are the most compatible 
-    */
-    textToDisplay = [
-        "Hello there",
-        "*Gasp!*",
-        "[IMAGE]:persona.png",
-        "Pizza PIE!!!"
-    ];
-    // This is where the talking sound is stored, either changing the string here
-    // or replacing the file will change the sound. MP3 is used as all browsers support it
-    textAudio = new Audio("assets/talking.mp3");
-    textAudio.loop = true;
+    
+    // Setting up values, putting everything in a default state
     cutOutput = false;
     outputting = false;
-
-    // This is used to find where in the text display it is, don't mess with this value
     textIndex = 0;
-
     textElement = document.getElementById('textOutput');
+    textAudio.loop = true;
+    document.getElementById('header').innerText = displayHeader;
+    document.title = displayTitle;
 
     // When the box is clicked, then progress the text
     document.getElementById("textBox").addEventListener("click", function() {
@@ -43,13 +20,11 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Variables used thoughout the file are declared here
-let textToDisplay;
 let textToDisplayChar;
 let textIndex;
 let charIndex;
 let textOutputInterval;
 let textElement;
-let textAudio;
 let audioPause;
 let cutOutput;
 let outputting;
@@ -60,7 +35,7 @@ function nextDisplay() {
         // clearInterval stops the loop of this function
         clearInterval(textOutputInterval);
         textElement.innerHTML = textToDisplayChar.join('');
-        audioPause = setTimeout(() => {textAudio.pause();}, 75);
+        audioPause = setTimeout(() => {textAudio.pause();}, textSpeed);
         cutOutput = false;
         outputting = false;
     } else {
@@ -86,11 +61,12 @@ function nextDisplay() {
             clearTimeout(audioPause);
             charIndex = 0;
             outputting = true;
-            // When the text starts displaying, there's a 75ms delay which means that the sounds start to early, this stops that
-            setTimeout(() => {textAudio.play();}, 80);
+            // When the text starts displaying, there's a delay which means that the sounds start to early, this stops that
+            // 1.06666666667 is a tiny bit after the text speed so it doens't start too quickly
+            setTimeout(() => {textAudio.play();}, (textSpeed*1.06666666667));
             textElement.innerHTML = '';
-            // Every 75ms, a char is displayed
-            textOutputInterval = setInterval(textOutput, 75);
+            // Every Xms, a char is displayed
+            textOutputInterval = setInterval(textOutput, textSpeed);
         }
         // Now that everything is done with the textIndex, it's incremented 
         textIndex++;
@@ -107,7 +83,7 @@ function textOutput() {
         clearInterval(textOutputInterval);
         // Stopping the audio as soon as possible was really janky, this avoids that
         // At first, only the looping was stopped but then the audio would still loop about 5 times before stopping
-        audioPause = setTimeout(() => {textAudio.pause();}, 75);
+        audioPause = setTimeout(() => {textAudio.pause();}, textSpeed);
         outputting = false;
         return;
     }
