@@ -22,17 +22,17 @@ This page stores the values for the engine, this includes:
         Any browser compatible audio file can be used, mp3 (IE9+) and WAV (No IE) are the most compatible 
 */
 let textToDisplay = [
-"Hello there",
-"*Gasp!*",
-"Pizza PIE!!!"
+'Welcome to this lovely text engine!',
+'I hope that you enjoy making something with this or just playing around',
+'This is the end of the basic stuff, open the variables.js file to change this text!'
 ];
 // This is where the talking sound is stored, either changing the string here
 // or replacing the file will change the sound. MP3 is used as all browsers support it
-let textAudio = new Audio("assets/talking.mp3");
+let textAudio = new Audio('assets/talking.mp3');
 
 // This is the speed of the text display (default 75)
 // This is in ms, lower is faster
 let textSpeed = 75;
 
-let displayHeader = "Retro Text Engine";
-let displayTitle = "Retro Text Engine";
+let displayHeader = 'Retro Text Engine';
+let displayTitle = 'Retro Text Engine';

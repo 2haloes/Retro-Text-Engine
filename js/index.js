@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.title = displayTitle;
 
     // When the box is clicked, then progress the text
-    document.getElementById("textBox").addEventListener("click", function() {
+    document.getElementById('textBox').addEventListener('click', function() {
         if (textIndex < textToDisplay.length || outputting) {
             cutOutput = true;
             nextDisplay();

@@ -13,6 +13,14 @@ It's a web based retro text engine, designed to be as good as I could make it
 * Lightweight (1/3rd of the default size is from supplied assets)
 * Design is responsive, works as well on mobile as it does on PC
 
+## How do I use this?
+
+1. Extract the zip somewhere
+2. Go into the folder then open 'js/variables.js' 
+3. Change the values how you want, the file explains how everything works
+4. Save the file, open the index.html file to load it locally (NOTE: Firefox prevents fonts from loading locally by default so the font may be monospace)
+5. To share, either send the files to who you would like or upload it to a web server and share the link around (Or hide it in a web app, whatever you'd like!)
+
 ## Why even make this?
 
 Well I made a promise of treats, failed that promise and now I apparently make birthday e-cards using home made engines
